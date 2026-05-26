@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Dashboard</h2>
+<p class="lead">Bienvenido, <strong>{{ user.username }}</strong>. Has iniciado sesión correctamente.</p>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Información del Usuario</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Username:</strong> {{ user.username }}</li>
+                <li class="list-group-item"><strong>Email:</strong> {{ user.email|default:"No registrado" }}</li>
+                <li class="list-group-item"><strong>Staff:</strong> {{ user.is_staff }}</li>
+                <li class="list-group-item"><strong>Superusuario:</strong> {{ user.is_superuser }}</li>
+                <li class="list-group-item"><strong>Grupos:</strong> {{ user.groups.all|join:", "|default:"Ninguno" }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Permisos Asignados ({{ permissions|length }})</div>
+            <div class="card-body" style="max-height: 300px; overflow-y: auto;">
+                {% if permissions %}
+                    <ul class="list-unstyled mb-0">
+                        {% for perm in permissions %}
+                            <li><code>{{ perm }}</code></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted mb-0">No tiene permisos asignados.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

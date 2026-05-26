@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Acceso Denegado{% endblock %}
+
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-1 text-danger">403</h1>
+    <h2>Acceso No Autorizado</h2>
+    <p class="lead">No tienes los permisos necesarios para acceder a esta página.</p>
+    <a href="{% url 'dashboard' %}" class="btn btn-primary">Volver al Dashboard</a>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - Django Auth{% endblock %}
+
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-4">Sistema de Autenticación Django</h1>
+    <p class="lead">
+        Implementación manual de Login / Logout usando el modelo <strong>auth</strong> de Django,
+        con control de acceso, permisos y redireccionamiento.
+    </p>
+    <hr class="my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="list-group text-start">
+                <div class="list-group-item list-group-item-action">
+                    <strong>🔐 Login manual</strong> — authenticate() / login() / logout()
+                </div>
+                <div class="list-group-item list-group-item-action">
+                    <strong>📋 Registro de usuarios</strong> — UserCreationForm
+                </div>
+                <div class="list-group-item list-group-item-action">
+                    <strong>🛡️ LoginRequiredMixin</strong> — Protege vistas (Dashboard, Perfil)
+                </div>
+                <div class="list-group-item list-group-item-action">
+                    <strong>🔑 PermissionRequiredMixin</strong> — Protege vistas con permisos específicos (Moderar)
+                </div>
+                <div class="list-group-item list-group-item-action">
+                    <strong>🚫 Redirección 403</strong> — Página personalizada para accesos no autorizados
+                </div>
+                <div class="list-group-item list-group-item-action">
+                    <strong>➡️ Redirect next</strong> — Redirección post-login a página original
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if not user.is_authenticated %}
+        <div class="mt-4">
+            <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Iniciar Sesión</a>
+            <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg">Registrarse</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Moderar Contenido{% endblock %}
+
+{% block content %}
+<h2>Panel de Moderación</h2>
+<p class="lead text-success">Acceso concedido. Tienes el permiso <code>auth.change_user</code>.</p>
+<p>Esta vista usa <strong>LoginRequiredMixin + PermissionRequiredMixin</strong>.</p>
+{% endblock %}
